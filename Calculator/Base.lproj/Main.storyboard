@@ -58,7 +58,7 @@
                                                             <color key="baseBackgroundColor" name="userColor1"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="F0r-hH-qRS" eventType="touchUpInside" id="WCO-R0-hh4"/>
+                                                            <action selector="percentCount:" destination="F0r-hH-qRS" eventType="touchUpInside" id="H4Y-1e-RNz"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7G-MG-7Gd">
@@ -303,6 +303,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AC" destination="aSQ-iT-F6Z" id="fnu-cu-rX5"/>
                         <outlet property="divideButtonOutlet" destination="N7G-MG-7Gd" id="0Af-3d-Gje"/>
                         <outlet property="equalButtonOutlet" destination="VW9-5C-AXD" id="oUe-YU-rW2"/>
                         <outlet property="multiplyButtonOutlet" destination="u6b-BB-FAx" id="Tco-Hc-S67"/>

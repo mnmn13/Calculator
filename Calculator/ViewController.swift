@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var substractButtonOutlet: UIButton!
     @IBOutlet weak var multiplyButtonOutlet: UIButton!
     @IBOutlet weak var divideButtonOutlet: UIButton!
-    @IBOutlet weak var persentButtonOutlet: UIButton!
+    @IBOutlet weak var perсentButtonOutlet: UIButton!
+    @IBOutlet weak var AC: UIButton!
     
     @IBOutlet weak var viewHolder: UIView!
     
@@ -58,8 +59,11 @@ class ViewController: UIViewController {
     
     @objc func userSwiped(_ gesture:UISwipeGestureRecognizer) {
         
-        if var text = resultLabel.text, !text.isEmpty {
+        if var text = resultLabel.text, !text.isEmpty, text != "0" {
             resultLabel.text = String(text.dropLast())
+            if resultLabel.text == "" {
+                resultLabel.text = "0"
+            }
         
         }
         
@@ -124,6 +128,16 @@ class ViewController: UIViewController {
     }
     
     
+    
+    @IBAction func percentCount(_ sender: UIButton) {
+        
+        
+        
+        
+    }
+    
+    
+    
     @IBAction func calculationButton(_ sender: UIButton) {
         
         
@@ -139,6 +153,7 @@ class ViewController: UIViewController {
             print(firstTempNumber)
             switch sender.tag {
             case 14:
+            
                 resultLabel.text = "/"
             case 15:
                 resultLabel.text = "x"
@@ -146,8 +161,10 @@ class ViewController: UIViewController {
                 resultLabel.text = "-"
             case 17:
                 resultLabel.text = "+"
-//            case 13:
- //               secondTempNumber = firstNum * resultNumber / hundred
+            case 13:
+                secondTempNumber = 0.0
+                secondTempNumber = firstNum * (Double(resultLabel.text!) ?? 0.0) / hundred
+                print(secondTempNumber)
  //               resultNumber = secondTempNumber
             default:
                 print("Error (calculationButton)")
