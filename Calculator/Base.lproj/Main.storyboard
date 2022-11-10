@@ -57,6 +57,9 @@
                                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" name="userColor1"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="F0r-hH-qRS" eventType="touchUpInside" id="WCO-R0-hh4"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7G-MG-7Gd">
                                                         <rect key="frame" x="313.66666666666669" y="0.0" width="100.33333333333331" height="100"/>
@@ -278,9 +281,13 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="iKs-1f-yoC">
                                 <rect key="frame" x="16" y="236.99999999999997" width="398" height="119.66666666666666"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IiV-hu-qIm" appends="YES" id="2jJ-os-Vpd"/>
+                                </connections>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XUS-sj-9LJ"/>
@@ -307,6 +314,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cg-xG-i9n" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="IiV-hu-qIm"/>
             </objects>
             <point key="canvasLocation" x="562" y="3"/>
         </scene>
