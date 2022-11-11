@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController {
     
@@ -16,7 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var substractButtonOutlet: UIButton!
     @IBOutlet weak var multiplyButtonOutlet: UIButton!
     @IBOutlet weak var divideButtonOutlet: UIButton!
-    @IBOutlet weak var perсentButtonOutlet: UIButton!
     @IBOutlet weak var AC: UIButton!
     
     @IBOutlet weak var viewHolder: UIView!
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     
     @objc func userSwiped(_ gesture:UISwipeGestureRecognizer) {
         
-        if var text = resultLabel.text, !text.isEmpty, text != "0" {
+        if let text = resultLabel.text, !text.isEmpty, text != "0" {
             resultLabel.text = String(text.dropLast())
             if resultLabel.text == "" {
                 resultLabel.text = "0"
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         
         let result3 = -result2
         resultLabel.text = String(format: "%g", result3)
-        
+        sound()
     }
     
     @IBAction func ACButton(_ sender: UIButton) {
@@ -84,6 +84,7 @@ class ViewController: UIViewController {
         firstNumber = 0
         firstNum = 0
         resultNumber = 0
+        sound()
     }
     
     
@@ -124,29 +125,27 @@ class ViewController: UIViewController {
             resultLabel.text = String(format: "%g", resultNumber)
             return
         }
-
+        sound()
     }
     
     
     
     @IBAction func percentCount(_ sender: UIButton) {
         
-        
-        
-        
+        if let text = resultLabel.text, !text.isEmpty, sender.tag == 13 {
+            
+            secondTempNumber = 0.0
+            resultNumber = firstNum * (Double(resultLabel.text!) ?? 0.0) / hundred
+    //        print(firstNum)
+      //      print(resultLabel.text ?? "")
+            option = true
+            resultLabel.text = String(format: "%g", resultNumber)
+        }
+        sound()
     }
     
-    
-    
     @IBAction func calculationButton(_ sender: UIButton) {
-        
-        
-        
-        if let text2 = resultLabel.text, !text2.isEmpty, sender.tag == 13 {
-            
-        }
-        
-        
+     
         if let text = resultLabel.text, !text.isEmpty, sender.tag != 18 {
             firstNum = Double(text) ?? 0
             firstTempNumber = firstNum
@@ -161,10 +160,7 @@ class ViewController: UIViewController {
                 resultLabel.text = "-"
             case 17:
                 resultLabel.text = "+"
-            case 13:
-                secondTempNumber = 0.0
-                secondTempNumber = firstNum * (Double(resultLabel.text!) ?? 0.0) / hundred
-                print(secondTempNumber)
+                
  //               resultNumber = secondTempNumber
             default:
                 print("Error (calculationButton)")
@@ -193,5 +189,10 @@ class ViewController: UIViewController {
             resultLabel.text = String(format: "%g", result)
         }
         
+        sound()
+        
+    }
+    func sound() {
+        AudioServicesPlaySystemSound(1306)
     }
 }
