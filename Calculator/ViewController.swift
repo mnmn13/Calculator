@@ -10,7 +10,6 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet var swipe: UISwipeGestureRecognizer!
     @IBOutlet weak var equalButtonOutlet: UIButton!
     @IBOutlet weak var plusButtonOutlet: UIButton!
@@ -18,15 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var multiplyButtonOutlet: UIButton!
     @IBOutlet weak var divideButtonOutlet: UIButton!
     @IBOutlet weak var AC: UIButton!
-    
     @IBOutlet weak var viewHolder: UIView!
     
     var startNumber = 0
     var firstNumber = 0
     var resultNumber: Double = 0
     var operation: Int? = nil
-    var option = false
-    
+    var option = false    
     var numberFromScreen: Double = 0
     var firstNum: Double = 0
     var firstTempNumber: Double = 0
@@ -34,8 +31,7 @@ class ViewController: UIViewController {
     let hundred: Double = 100
     
     @IBOutlet weak var resultLabel: UILabel!
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         otherSet()
@@ -48,15 +44,12 @@ class ViewController: UIViewController {
         viewHolder.backgroundColor = .black
     }
     
-    
     func swipeSet() {
         swipe = UISwipeGestureRecognizer(target: self, action: #selector(userSwiped))
         swipe.direction = .left
         view.addGestureRecognizer(swipe)
     }
-    
-    
-    
+ 
     @objc func userSwiped(_ gesture:UISwipeGestureRecognizer) {
         
         if let text = resultLabel.text, !text.isEmpty, text != "0" {
@@ -64,11 +57,8 @@ class ViewController: UIViewController {
             if resultLabel.text == "" {
                 resultLabel.text = "0"
             }
-        
         }
-        
     }
-    
     
     @IBAction func signChange(_ sender: UIButton) {
         guard let result = resultLabel.text,
@@ -86,9 +76,7 @@ class ViewController: UIViewController {
         resultNumber = 0
         sound()
     }
-    
-    
-    
+     
     @IBAction func numberPressed(_ sender: UIButton) {
         guard sender.tag != 10 else {
             if option == true {
@@ -97,13 +85,11 @@ class ViewController: UIViewController {
                
             } else if !resultLabel.text!.contains(".") {
                 resultLabel.text = resultLabel.text! + "."
-               
             }
             resultNumber = Double(resultLabel.text!) ?? 0
             return
         }
-        
-        
+                
         if option == true {
             if resultLabel.text == "0" {
                 resultLabel.text = ""
@@ -117,7 +103,6 @@ class ViewController: UIViewController {
             resultLabel.text = resultLabel.text! + String(sender.tag)
         }
         
-        
         resultNumber = Double(resultLabel.text!) ?? 0
         
         guard sender.tag != 13 else {
@@ -127,17 +112,13 @@ class ViewController: UIViewController {
         }
         sound()
     }
-    
-    
-    
+       
     @IBAction func percentCount(_ sender: UIButton) {
         
         if let text = resultLabel.text, !text.isEmpty, sender.tag == 13 {
             
             secondTempNumber = 0.0
             resultNumber = firstNum * (Double(resultLabel.text!) ?? 0.0) / hundred
-    //        print(firstNum)
-      //      print(resultLabel.text ?? "")
             option = true
             resultLabel.text = String(format: "%g", resultNumber)
         }
@@ -161,18 +142,16 @@ class ViewController: UIViewController {
             case 17:
                 resultLabel.text = "+"
                 
- //               resultNumber = secondTempNumber
             default:
                 print("Error (calculationButton)")
             }
-
             operation = sender.tag
             option = true
+            
         } else if sender.tag == 18 {
             guard operation != nil else { return }
             var result = 0.0
-            
-            
+                        
             switch operation {
             case 17:
                 result = firstNum + resultNumber
@@ -185,13 +164,11 @@ class ViewController: UIViewController {
             default:
                 print("Error (calculation)")
             }
-
             resultLabel.text = String(format: "%g", result)
         }
-        
         sound()
-        
     }
+    
     func sound() {
         AudioServicesPlaySystemSound(1306)
     }
