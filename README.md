@@ -7,7 +7,6 @@ Calculator is an iOS application that provides a simple and intuitive calculator
 - Basic Calculator Functions: The app supports addition, subtraction, multiplication, and division operations.
 - Decimal Point: Users can input decimal numbers for precise calculations.
 - Clear and Delete: The app allows users to clear the input or delete the last entered digit.
-- Calculation History: Users can view the history of calculations performed during the current session.
 
 ## Functionality
 
@@ -16,7 +15,6 @@ Calculator is an iOS application that provides a simple and intuitive calculator
 3. Calculation: The app performs the calculation and displays the result in real-time.
 4. Clear: The "Clear" button resets the input and calculation history.
 5. Delete: Tapping the "Delete" button removes the last entered digit.
-6. Calculation History: The app displays a history of calculations performed during the current session.
 
 ## Interface
 
